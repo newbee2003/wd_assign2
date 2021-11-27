@@ -18,6 +18,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -36,6 +40,35 @@ article.container {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+}
+
+article.container--register,
+article.container--order {
+  grid-template-columns: 30% 30% 5% 35%;
+  grid-template-areas:
+    "header header header header"
+    "main main . sidebar"
+    "footer footer footer footer";
+}
+
+article.container--register header,
+article.container--order header {
+  grid-area: header;
+}
+
+article.container--register main,
+article.container--order main {
+  grid-area: main;
+}
+
+article.container--register aside,
+article.container--order aside {
+  grid-area: sidebar;
+}
+
+article.container--register footer,
+article.container--order footer {
+  grid-area: footer;
 }
 
 /* Setting up basic css for text elements */
@@ -156,6 +189,11 @@ a {
   color: var(--lighten-primary-color);
 }
 
+.btn--disable {
+	pointer-events: none;
+	filter: grayscale(1);
+}
+
 /* setting up ripple element */
 .ripple__wrapper {
   overflow: hidden !important;
@@ -164,7 +202,6 @@ a {
 
 .ripple__inner {
   position: absolute;
-  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
@@ -173,7 +210,7 @@ a {
   border-radius: 50%;
   background-color: #181a1b;
   filter: blur(4px);
-	pointer-events: none;
+  pointer-events: none;
 }
 
 /* colored ripple with btn-text, btn--outlined and navbar link */
@@ -185,6 +222,15 @@ a {
 
 .ripple__inner--active {
   animation: ripple 400ms ease-in-out;
+}
+
+/* Scrool to top button */
+.totop {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
 }
 
 /* Setting up navbar */
@@ -234,7 +280,7 @@ header {
   position: relative;
   justify-content: center;
   align-items: center;
-	width: 100%;
+  width: 100%;
   min-width: 64px;
   height: 36px;
   user-select: none;
@@ -260,6 +306,14 @@ header {
   color: var(--lighten-primary-color);
 }
 
+/* highlight the cart's counter */
+.header__navbar__link--order__cart {
+  padding: 0.2em;
+  margin-left: 0.2em;
+  background-color: var(--text-color--0_7);
+  border-radius: 5px;
+}
+
 .header__navbar__box {
   /* bouncy version */
   /* transition: all 450ms cubic-bezier(0.25, 0.25, 0.325, 1.39); */
@@ -279,7 +333,7 @@ header {
 .header__navbar__heading {
   color: var(--text-color-light);
   text-align: center;
-	user-select: none;
+  user-select: none;
 }
 
 /* highlight heading in the navbar when hover */
@@ -433,8 +487,8 @@ main section {
 
 /* Third secion in home page */
 .main__menu {
-	text-align: center;
-	margin-bottom: 3em;
+  text-align: center;
+  margin-bottom: 3em;
 }
 
 .main__menu__container {
@@ -451,65 +505,104 @@ main section {
   overflow: hidden;
   transition: background 800ms ease-in-out;
   box-shadow: 0 70px 63px -60px #000000;
-	border-radius: 15px;
-	height: 500px;
-	background-size: 700px;
+  border-radius: 15px;
+  height: 500px;
+  background-size: 700px;
 }
 
 /* Fourth secion in the home page */
 .main__map {
-	background-color: var(--darker-background-color-2);
-	padding: 1em;
+  background-color: var(--darker-background-color-2);
+  padding: 1em;
 }
 .main__menu__item {
-	background-position: center;
+  background-position: center;
 }
 
 .main__menu__item:nth-child(1) {
-	background-image: url(../images/home.first_item.webp);
+  background-image: url(../images/home.first_item.webp);
 }
 
-
 .main__menu__item:nth-child(2) {
-	background-image: url(../images/home.third_item.webp);
+  background-image: url(../images/home.third_item.webp);
 }
 
 .main__menu__item:nth-child(3) {
-	background-image: url(../images/home.second_item.webp);
+  background-image: url(../images/home.second_item.webp);
 }
 
-.main__menu__item:hover {
-	background-size: 1400px;;	
+/* zoomin the photo when hovered */
+.main__menu__item:hover,
+.main__menu__item:active,
+.main__menu__item:focus {
+  background-size: 1000px;
 }
 
 .main__menu__item p {
-	position: absolute;
-	left: 10px;
-	z-index: 2;
-	color: var(--text-color-light);
-	opacity: 0;
-	transition: all 250ms ease-in-out;
+  position: absolute;
+  left: 10px;
+  z-index: 2;
+  color: var(--text-color-light);
+  opacity: 0;
+  transition: all 250ms ease-in-out;
 }
 
 .main__menu__item__name {
-	top: 5px;
-	font-weight: 700;
-	font-size: 2em;
+  top: 5px;
+  font-weight: 700;
+  font-size: 2em;
 }
 
 .main__menu__item__type {
-	top: 80px;
+  top: 80px;
 }
 
 .main__menu__item__price {
-	bottom: 10px;
-	font-weight: 700;
-	font-size: 2.5em;
+  bottom: 10px;
+  font-weight: 700;
+  font-size: 2.5em;
 }
 
-
 .main__menu__item:hover p {
-	opacity: 1;
+  opacity: 1;
+}
+
+/* Main for order and register page */
+aside {
+  margin-top: calc(60vh + 10px);
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+}
+
+.main--order h1,
+.main--register h1,
+aside h1 {
+  margin-top: 0;
+}
+
+.main--order__cart__container {
+  width: 90%;
+  flex-direction: column;
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
+    rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+	padding: 0 16px 0 16px;
+	background-color: var(--darker-background-color-1);
+}
+
+.main--order__cart__inner {
+	list-style: none;
+}
+
+.main--order__cart__item p {
+	display: flex;
+	align-items: center;
+}
+
+.main--order__cart__item p span {
+	margin: 0 5px 0 5px;
 }
 
 /* setting up footer */
@@ -654,22 +747,22 @@ footer {
     margin-top: calc(40vh + 10px);
   }
 
-	/* reduce font-size for mobile version */
-	main h2 {
-		font-size: 45px;
-	}
+  /* reduce font-size for mobile version */
+  main h2 {
+    font-size: 45px;
+  }
 
-	/* smaller menu */
-	.main__menu__container,
-	.main__aboutus__container {
-		grid-template-columns: repeat(auto-fit, 275px);
-	}
+  /* smaller menu */
+  .main__menu__container,
+  .main__aboutus__container {
+    grid-template-columns: repeat(auto-fit, 275px);
+  }
 
-	/* denser text for mobile */
-	.main__moreaboutus p {
-		width: 80%;
-		padding: 1em;	
-	}
+  /* denser text for mobile */
+  .main__moreaboutus p {
+    width: 80%;
+    padding: 1em;
+  }
 }
 
 /* Animations */

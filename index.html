@@ -16,9 +16,28 @@
     <!-- Loading utility functions -->
     <script src="js/utils.js"></script>
     <!-- Using defer to load the script after finishing rendering the DOM -->
+    <script defer src="js/order.js"></script>
     <script defer src="js/script.js"></script>
   </head>
   <body>
+    <!-- Temp elements for scroll to top button -->
+    <span id="top"></span>
+    <a href="#top" class="btn ripple__wrapper totop">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="{2}"
+          d="M5 11l7-7 7 7M5 19l7-7 7 7"
+        />
+      </svg>
+    </a>
     <article class="container">
       <!-- Using BEM sytax for naming class -->
       <header>
@@ -45,7 +64,10 @@
                 header__navbar__link header__navbar__link--order
               "
             >
-              <a href="order.html">Order</a>
+              <a href="order.html"
+                >Order
+                <span class="header__navbar__link--order__cart">0</span></a
+              >
             </li>
             <li class="ripple__wrapper header__navbar__link">
               <a href="features.html">Features</a>
@@ -155,7 +177,10 @@
         <section class="main__map">
           <h2>Our Next Destination</h2>
           <h4>December 10-12</h4>
-					<p>Rolling Loud California, San Bernadino, CA: Rolling Loud Cereal Bar & Rolling Loud Eats</p>
+          <p>
+            Rolling Loud California, San Bernadino, CA: Rolling Loud Cereal Bar
+            & Rolling Loud Eats
+          </p>
           <div style="width: 100%">
             <iframe
               width="100%"

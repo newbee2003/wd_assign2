@@ -16,10 +16,29 @@
     <!-- Loading utility functions -->
     <script src="js/utils.js"></script>
     <!-- Using defer to load the script after finishing rendering the DOM -->
+    <script defer src="js/order.js"></script>
     <script defer src="js/script.js"></script>
   </head>
   <body>
-    <article class="container">
+    <!-- Temp elements for scroll to top button -->
+    <span id="top"></span>
+    <a href="#top" class="btn ripple__wrapper totop">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="{2}"
+          d="M5 11l7-7 7 7M5 19l7-7 7 7"
+        />
+      </svg>
+    </a>
+    <article class="container container--order">
       <!-- Using BEM sytax for naming class -->
       <header>
         <nav class="header__navbar">
@@ -42,7 +61,10 @@
                 header__navbar__link--active
               "
             >
-              <a href="order.html">Order</a>
+              <a href="order.html"
+                >Order
+                <span class="header__navbar__link--order__cart">0</span></a
+              >
             </li>
             <li class="ripple__wrapper header__navbar__link">
               <a href="features.html">Features</a>
@@ -84,7 +106,18 @@
           <h1>Orders<br />Checkout</h1>
         </div>
       </header>
-      <main class="main--home"></main>
+      <main class="main--order">
+				<h1>Test</h1>
+			</main>
+			<!-- Showing cart -->
+			<aside class="main--order__cart">
+				<div class="main--order__cart__container">
+					<h4>Cart</h4>
+					<ul class="main--order__cart__inner">
+					</ul>
+					<p class="main--order__cart__cost"><strong>Cost:</strong> $0</p>
+				</div>
+			</aside>
       <footer>
         <div class="footer__copyright"><p>Copyright © 2021</p></div>
         <div class="footer__social">
