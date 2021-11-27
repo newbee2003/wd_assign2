@@ -265,6 +265,7 @@ a:active {
   background-color: #181a1b;
   -webkit-filter: blur(4px);
           filter: blur(4px);
+	z-index: 1;
   pointer-events: none;
 }
 

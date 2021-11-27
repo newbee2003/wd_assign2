@@ -51,44 +51,6 @@ if (!price) price = 0;
 localStorage.setItem("cart", JSON.stringify(cart));
 localStorage.setItem("price", price);
 cartCount.innerHTML = cart.count;
-cartCost.innerHTML = `<strong>Cost</strong>: $${price}`;
-
-// Init the cart navList
-for (let item in cart) {
-  if (item !== "count") {
-    const tmpElm = cartListItemTemplate(item, cart[item].count);
-    // setting event click for inc, dec btns
-    const tmpElmName = tmpElm.children[0].textContent;
-    // del btn
-    tmpElm.children[1].children[0].addEventListener("click", () => {
-      if (cart[tmpElmName].count > 0) {
-        --cart.count;
-        tmpElm.children[1].children[1].innerHTML = --cart[tmpElmName].count;
-        price -= cart[tmpElmName].price;
-      }
-      if (cart[tmpElmName].count === 0)
-        tmpElm.children[1].children[0].classList.add("btn--disable");
-      else tmpElm.children[1].children[0].classList.remove("btn--disable");
-      cartCount.innerHTML = cart.count;
-      cartCost.innerHTML = `<strong>Cost</strong>: $${price}`;
-      localStorage.setItem("cart", JSON.stringify(cart));
-      localStorage.setItem("price", price);
-    });
-    // inc btn
-    tmpElm.children[1].children[2].addEventListener("click", () => {
-      ++cart.count;
-      tmpElm.children[1].children[1].innerHTML = ++cart[tmpElmName].count;
-      price += cart[tmpElmName].price;
-      if (cart[tmpElmName].count > 0)
-        tmpElm.children[1].children[0].classList.remove("btn--disable");
-      cartCount.innerHTML = cart.count;
-      cartCost.innerHTML = `<strong>Cost</strong>: $${price}`;
-      localStorage.setItem("cart", JSON.stringify(cart));
-      localStorage.setItem("price", price);
-    });
-    cartList.appendChild(tmpElm);
-  }
-}
 
 /**
  * Setting up the ripple
@@ -123,7 +85,7 @@ for (let foodItem of foodMenuList) {
     let itemPrice = Number(clickedItemChildren[2].textContent.slice(1));
     price += itemPrice;
     // check if the item is add for the first time or not
-    if (!cart[itemName]) cart[itemName] = {count: 1, price: itemPrice};
+    if (!cart[itemName]) cart[itemName] = { count: 1, price: itemPrice };
     else ++cart[itemName].count;
     ++cart.count; // add extra item to the cart
     // update the localstorage
@@ -131,6 +93,6 @@ for (let foodItem of foodMenuList) {
     localStorage.setItem("price", price);
     // Update number of item in the cart in the navbar
     cartCount.innerHTML = cart.count;
-		cartCost.innerHTML = `<strong>Cost</strong>: $${price}`;
+    if (cartCost) cartCost.innerHTML = `<strong>Cost</strong>: $${price}`;
   });
 }
