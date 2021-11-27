@@ -279,6 +279,7 @@ header {
 .header__navbar__heading {
   color: var(--text-color-light);
   text-align: center;
+	user-select: none;
 }
 
 /* highlight heading in the navbar when hover */
@@ -341,7 +342,7 @@ header {
 }
 
 .header__banner--home {
-  background-image: url(/images/home.webp);
+  background-image: url(../images/home.webp);
 }
 
 .header__banner h1 {
