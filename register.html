@@ -16,7 +16,7 @@
     <!-- Loading utility functions -->
     <script src="js/utils.js"></script>
     <!-- Using defer to load the script after finishing rendering the DOM -->
-    <script defer src="js/order.js"></script>
+    <script defer src="js/register.js"></script>
     <script defer src="js/script.js"></script>
   </head>
   <body>
@@ -38,7 +38,7 @@
         />
       </svg>
     </a>
-    <article class="container">
+    <article class="container container--register">
       <!-- Using BEM sytax for naming class -->
       <header>
         <nav class="header__navbar">
@@ -106,10 +106,153 @@
         <div class="header__navbar__box"></div>
         <!-- Cover photo for the page -->
         <div class="header__banner header__banner--home">
-          <h1>Register</h1>
+          <h1>Login<br />Register</h1>
         </div>
       </header>
-      <main class="main--home"></main>
+      <main class="main--register">
+        <form
+          class="main--register__form__container"
+          action="http://mercury.swin.edu.au/it000000/cos10005/regtest.php"
+          method="post"
+        >
+          <h3>Register</h3>
+          <!-- <div class="input__wrapper"> -->
+          <!--   <p><strong>Checkout Mode:</strong></p> -->
+          <!--   <input -->
+          <!--     type="radio" -->
+          <!--     id="input__checkout-mode--pickup" -->
+          <!--     name="Checkout Mode" -->
+          <!--     value="pickup" -->
+          <!--   /> -->
+          <!--   <label for="input__checkout-mode--pickup">Pick Up</label> -->
+          <!--   <input -->
+          <!--     type="radio" -->
+          <!--     checked -->
+          <!--     id="input__checkout-mode--delivery" -->
+          <!--     name="Checkout Mode" -->
+          <!--     value="delivery" -->
+          <!--   /> -->
+          <!--   <label for="input__checkout-mode--delivery">Delivery</label> -->
+          <!-- </div> -->
+          <div class="input__wrapper">
+            <label class="input__label" for="input__username">User Name</label>
+            <input
+              type="text"
+              class="input__form"
+              id="input__username"
+              name="User Name"
+              placeholder="User Name"
+            />
+            <small class="input__feedback">Please fill in this field</small>
+          </div>
+          <div class="input__wrapper">
+            <label class="input__label" for="input__email">Email</label>
+            <input
+              type="text"
+              class="input__form"
+              id="input__email"
+              name="Email"
+              placeholder="Email"
+            />
+            <small class="input__feedback"
+              >Please fill in this field with the correct email format</small
+            >
+          </div>
+          <div class="input__wrapper">
+            <label class="input__label" for="input__password">Password</label>
+            <input
+              type="password"
+              class="input__form"
+              id="input__password"
+              name="Password"
+              placeholder="Password"
+            />
+            <small class="input__feedback"
+              >Please fill in a password with at least 8 characters.</small
+            >
+          </div>
+          <div class="input__wrapper">
+            <label class="input__label" for="input__re-password"
+              >Retype Password</label
+            >
+            <input
+              type="password"
+              class="input__form"
+              id="input__re-password"
+              name="Retype Password"
+              placeholder="Retype Password"
+            />
+            <small class="input__feedback"
+              >Please fill in the same as the above password</small
+            >
+          </div>
+          <div class="input__wrapper">
+            <label class="input__label" for="input__postcode">Post Code</label>
+            <input
+              type="text"
+              class="input__form"
+              id="input__postcode"
+              name="Post Code"
+              placeholder="Post Code"
+            />
+            <small class="input__feedback"
+              >Please fill in postcode that is 4 digits</small
+            >
+          </div>
+          <div class="input__wrapper">
+            <p><strong>Which things do you like better?</strong></p>
+            <input
+              type="radio"
+              id="input__favourite-food"
+              name="Favourite Food"
+              value="taco"
+            />
+            <label for="input__favourite-food">Taco</label>
+            <input
+              type="radio"
+              checked
+              id="input__favourite-food-2"
+              name="Favourite Food"
+              value="taco 2"
+            />
+            <label for="input__favourite-food-2">Taco but another button</label>
+            <input
+              type="radio"
+              id="input__favourite-food--pizza"
+              name="Favourite Food"
+              disabled
+              value="pizza"
+            />
+            <label for="input__favourite-food--pizza">Pizza</label>
+          </div>
+          <div class="input__wrapper">
+            <label class="input__label" for="input__favoureite-set"
+              >Favourite Set</label
+            >
+						<select name="favourite set" id="input__favourite-set">
+							<option value="2">Two People</option>
+							<option value="4">Four People</option>
+							<option value="6">Six People</option>
+						</select>
+          </div>
+          <div class="input__buttons__wrapper">
+            <input class="btn ripple__wrapper" type="submit" value="Submit" />
+            <input
+              class="btn btn--text ripple__wrapper"
+              type="reset"
+              value="Reset"
+            />
+          </div>
+        </form>
+      </main>
+      <!-- Showing cart -->
+      <aside class="main--order__cart">
+        <div class="main--order__cart__container">
+          <h3>Cart</h3>
+          <ul class="main--order__cart__inner"></ul>
+          <p class="main--order__cart__cost"><strong>Cost:</strong> $0</p>
+        </div>
+      </aside>
       <footer>
         <div class="footer__copyright"><p>Copyright © 2021</p></div>
         <div class="footer__social">

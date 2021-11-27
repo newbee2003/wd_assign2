@@ -107,17 +107,178 @@
         </div>
       </header>
       <main class="main--order">
-				<h1>Test</h1>
-			</main>
-			<!-- Showing cart -->
-			<aside class="main--order__cart">
-				<div class="main--order__cart__container">
-					<h4>Cart</h4>
-					<ul class="main--order__cart__inner">
-					</ul>
-					<p class="main--order__cart__cost"><strong>Cost:</strong> $0</p>
-				</div>
-			</aside>
+        <form
+          class="main--order__form__container"
+          action="http://mercury.swin.edu.au/it000000/cos10005/regtest.php"
+          method="post"
+        >
+          <h3>Order Info</h3>
+          <div class="input__wrapper">
+            <p><strong>Checkout Mode:</strong></p>
+            <input
+              type="radio"
+              id="input__checkout-mode--pickup"
+              name="Checkout Mode"
+              value="pickup"
+            />
+            <label for="input__checkout-mode--pickup">Pick Up</label>
+            <input
+              type="radio"
+              checked
+              id="input__checkout-mode--delivery"
+              name="Checkout Mode"
+              value="delivery"
+            />
+            <label for="input__checkout-mode--delivery">Delivery</label>
+          </div>
+          <div class="input__wrapper">
+            <label class="input__label" for="input__delivery-adress"
+              >Delivery Address</label
+            >
+            <input
+              type="text"
+              class="input__form"
+              id="input__delivery-address"
+              name="Delivery Address"
+              placeholder="Delivery Address"
+            />
+            <small class="input__feedback">Please fill in this field</small>
+          </div>
+          <div class="input__wrapper">
+            <label for="input__copy-delivery-to-billing"
+              >same Billing Address as the Delivery Adress</label
+            >
+            <input
+              type="checkbox"
+              id="input__copy-delivery-to-billing"
+              name="Use the same Billing Address as Delivery Dddress"
+            />
+          </div>
+          <div class="input__wrapper">
+            <label class="input__label" for="input__billing-adress"
+              >Billing Address</label
+            >
+            <input
+              type="text"
+              class="input__form"
+              id="input__billing-address"
+              name="Billing Address"
+              placeholder="Billing Address"
+            />
+            <small class="input__feedback">Please fill in this field</small>
+          </div>
+          <div class="input__wrapper">
+            <label class="input__label" for="input__contact-number"
+              >Contact Number</label
+            >
+            <!-- regrex for vietnamese phone number -->
+            <input
+              type="tel"
+              class="input__form"
+              id="input__contact-number"
+              name="Contact Number"
+              placeholder="Number"
+            />
+            <small class="input__feedback"
+              >Please fill in this field with the correct format of Vietnamese
+              phone number</small
+            >
+          </div>
+          <div class="input__wrapper">
+            <label class="input__label" for="input__email">Email</label>
+            <input
+              type="text"
+              class="input__form"
+              id="input__email"
+              name="Email"
+              placeholder="Email"
+            />
+            <small class="input__feedback"
+              >Please fill in this field with the correct email format</small
+            >
+          </div>
+          <div class="input__wrapper">
+            <label class="input__label" for="input__email">Email</label>
+            <input
+              type="text"
+              class="input__form"
+              id="input__email"
+              name="Email"
+              placeholder="Email"
+            />
+            <small class="input__feedback"
+              >Please fill in this field with the correct email format</small
+            >
+          </div>
+          <div class="input__wrapper">
+            <p><strong>Paying Mode:</strong></p>
+            <input
+              type="radio"
+              id="input__pay-mode--pickup"
+              name="Pay Mode"
+              value="pickup"
+            />
+            <label for="input__pay-mode--pickup">Pick Up</label>
+            <input
+              type="radio"
+              checked
+              id="input__pay-mode--credit-card--visa"
+              name="Pay Mode"
+              value="visa"
+            />
+            <label for="input__pay-mode--credit-card--visa">Visa Card</label>
+            <input
+              type="radio"
+              id="input__pay-mode--credit-card--master"
+              name="Pay Mode"
+              value="master"
+            />
+            <label for="input__pay-mode--credit-card--master"
+              >Master Card</label
+            >
+            <input
+              type="radio"
+              id="input__pay-mode--credit-card--american-express"
+              name="Pay Mode"
+              value="American Express"
+            />
+            <label for="input__pay-mode--credit-card--american-express"
+              >American Express</label
+            >
+          </div>
+          <div class="input__wrapper">
+            <label class="input__label" for="input__credit-card"
+              >Credit Card</label
+            >
+            <input
+              type="text"
+              class="input__form"
+              id="input__credit-card"
+              name="Credit Card"
+              placeholder="Credit Card"
+            />
+            <small class="input__feedback"
+              >Please fill in this field with the correct card format</small
+            >
+          </div>
+          <div class="input__buttons__wrapper">
+            <input class="btn ripple__wrapper" type="submit" value="Submit" />
+            <input
+              class="btn btn--text ripple__wrapper"
+              type="reset"
+              value="Reset"
+            />
+          </div>
+        </form>
+      </main>
+      <!-- Showing cart -->
+      <aside class="main--order__cart">
+        <div class="main--order__cart__container">
+          <h3>Cart</h3>
+          <ul class="main--order__cart__inner"></ul>
+          <p class="main--order__cart__cost"><strong>Cost:</strong> $0</p>
+        </div>
+      </aside>
       <footer>
         <div class="footer__copyright"><p>Copyright © 2021</p></div>
         <div class="footer__social">
